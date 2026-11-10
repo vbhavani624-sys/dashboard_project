@@ -17,13 +17,13 @@ st.markdown("Dynamic dashboard with KPI cards, filters and interactive charts")
 # Load datasets
 @st.cache_data
 def load_data():
-  BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-churn_file = os.path.join(BASE_DIR, "customer_churn.csv")
-checkout_file = os.path.join(BASE_DIR, "checkout_ab_test.csv")
+    churn_file = os.path.join(BASE_DIR, "customer_churn.csv")
+    checkout_file = os.path.join(BASE_DIR, "checkout_ab_test.csv")
 
-churn = pd.read_csv(churn_file)
-checkout = pd.read_csv(checkout_file)
+    churn = pd.read_csv(churn_file)
+    checkout = pd.read_csv(checkout_file)
 
     # Clean Total Charges column
     churn["TotalChargesINR"] = pd.to_numeric(
