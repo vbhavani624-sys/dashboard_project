@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 # Page configuration
 st.set_page_config(
@@ -16,8 +17,13 @@ st.markdown("Dynamic dashboard with KPI cards, filters and interactive charts")
 # Load datasets
 @st.cache_data
 def load_data():
-    churn = pd.read_csv("customer_churn.csv")
-    checkout = pd.read_csv("checkout_ab_test.csv")
+  BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+churn_file = os.path.join(BASE_DIR, "customer_churn.csv")
+checkout_file = os.path.join(BASE_DIR, "checkout_ab_test.csv")
+
+churn = pd.read_csv(churn_file)
+checkout = pd.read_csv(checkout_file)
 
     # Clean Total Charges column
     churn["TotalChargesINR"] = pd.to_numeric(
